@@ -15,6 +15,12 @@ public class RemoveElement {
         return nums.length - empties;
     }
 
+//    Complexity analysis
+//
+//    Time complexity : O(n). Assume the array has a total of nnn elements, both iii and jjj traverse at most 2n2n2n steps.
+//
+//    Space complexity : O(1).
+
     public int removeElement2(int[] nums, int val) {
         int i = 0;
         for (int j = 0; j < nums.length; j++) {
@@ -25,6 +31,14 @@ public class RemoveElement {
         }
         return i;
     }
+
+//    Complexity analysis
+
+//    Time complexity : O(n). Both i and n traverse at most n steps. In this approach,
+//    the number of assignment operations is equal to the number of elements to remove.
+//    So it is more efficient if elements to remove are rare.
+//
+//    Space complexity : O(1).
 
     public int removeElement3(int[] nums, int val) {
         int i = 0;
