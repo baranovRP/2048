@@ -1,37 +1,52 @@
 public class ValidMountainArray {
-    public static void main(String[] args) {
-        ValidMountainArray vma = new ValidMountainArray();
-        int[] arr = {0, 3, 2, 1};
-        vma.validMountainArray(arr);
-    }
 
     public boolean validMountainArray(int[] arr) {
         if (arr.length < 3) return false;
 
-        int len = arr.length;
-        int max = arr[0];
-        int maxIdx = 0;
-        for (int i = 1; i < len; i++) {
-            if (max < arr[i]) {
-                max = arr[i];
-                maxIdx = i;
+        boolean res = false;
+        int left = 0, right = arr.length - 1;
+        boolean leftStop = false, rightStop = false;
+        while (left < arr.length - 1 && right > 0) {
+            if (arr[left] < arr[left + 1]) {
+                left++;
+            } else {
+                leftStop = true;
+            }
+            if (arr[right - 1] > arr[right]) {
+                right--;
+            } else {
+                rightStop = true;
+            }
+            if (leftStop && rightStop) {
+                res = left == right;
+                break;
             }
         }
-
-        if (maxIdx == 0 || maxIdx == len - 1) return false;
-        int maxLIdx = maxIdx, maxRIdx = maxIdx;
-        int currentL = maxIdx - 1, currentR = maxIdx + 1;
-        while (currentL >= 0) {
-            if (arr[maxLIdx] <= arr[currentL]) return false;
-            maxLIdx--;
-            currentL--;
-        }
-        while (currentR < len) {
-            if (arr[maxRIdx] <= arr[currentR]) return false;
-            maxRIdx++;
-            currentR++;
-        }
-        return true;
+        return res;
     }
 
+
+    //    Complexity Analysis
+//
+//    Time Complexity: O(N), where N is the length of A.
+//
+//    Space Complexity: O(1).
+    public boolean validMountainArray2(int[] A) {
+        int N = A.length;
+        int i = 0;
+
+        // walk up
+        while (i + 1 < N && A[i] < A[i + 1])
+            i++;
+
+        // peak can't be first or last
+        if (i == 0 || i == N - 1)
+            return false;
+
+        // walk down
+        while (i + 1 < N && A[i] > A[i + 1])
+            i++;
+
+        return i == N - 1;
+    }
 }
