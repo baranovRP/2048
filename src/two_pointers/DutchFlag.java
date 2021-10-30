@@ -1,4 +1,4 @@
-package sliding_window;
+package two_pointers;
 
 class DutchFlag {
 

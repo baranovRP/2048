@@ -1,4 +1,4 @@
-package sliding_window;
+package two_pointers;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
