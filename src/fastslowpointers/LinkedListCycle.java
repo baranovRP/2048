@@ -1,29 +1,26 @@
 package fastslowpointers;
 
-public class LinkedListCycleLength {
-    public static int findCycleLength(ListNode head) {
-        ListNode fast = head;
-        ListNode slow = head;
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-            if (fast == slow) {
-                ListNode start = slow;
-                int length = 0;
-                while (start.next != slow) {
-                    length++;
-                    start = start.next;
-                }
-                return length + 1;
-            }
-        }
-        return -1;
-    }
+class ListNode {
+    int value = 0;
+    ListNode next;
 
+    ListNode(int value) {
+        this.value = value;
+    }
+}
+
+class LinkedListCycle {
     /**
-     * Time and Space Complexity: The above algorithm runs in O(N) time complexity and O(1) space complexity.
+     * Time Complexity
+     * As we have concluded above, once the slow pointer enters the cycle,
+     * the fast pointer will meet the slow pointer in the same loop.
+     * Therefore,
+     * the time complexity of our algorithm will be O(N) where ‘N’ is the total number of nodes in the LinkedList.
+     * <p>
+     * Space Complexity
+     * The algorithm runs in constant space O(1).
      */
-    public static int findCycleLength2(ListNode head) {
+    public static int findCycleLength(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
         while (fast != null && fast.next != null) {
@@ -53,9 +50,9 @@ public class LinkedListCycleLength {
         head.next.next.next.next = new ListNode(5);
         head.next.next.next.next.next = new ListNode(6);
         head.next.next.next.next.next.next = head.next.next;
-        System.out.println("LinkedList cycle length: " + LinkedListCycleLength.findCycleLength(head));
+        System.out.println("LinkedList cycle length: " + LinkedListCycle.findCycleLength(head));
 
         head.next.next.next.next.next.next = head.next.next.next;
-        System.out.println("LinkedList cycle length: " + LinkedListCycleLength.findCycleLength(head));
+        System.out.println("LinkedList cycle length: " + LinkedListCycle.findCycleLength(head));
     }
 }
