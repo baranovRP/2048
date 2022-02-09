@@ -1,4 +1,4 @@
-package ds;
+package ds.array;
 
 public class CheckRemoveEven {
 
