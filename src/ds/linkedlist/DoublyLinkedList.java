@@ -1,4 +1,4 @@
-package ds.sll;
+package ds.linkedlist;
 
 public class DoublyLinkedList<T> {
 

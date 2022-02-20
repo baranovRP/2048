@@ -1,4 +1,4 @@
-package ds.sll;
+package ds.linkedlist;
 
 public class SinglyLinkedList<T> {
     //Node inner class for SLL
