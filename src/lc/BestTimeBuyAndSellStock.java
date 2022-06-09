@@ -20,6 +20,20 @@ public class BestTimeBuyAndSellStock {
         return maxProfit;
     }
 
+    // Time = O(N)
+    // Space = O(1)
+    public int maxProfit1(int[] prices) {
+        int minprice = Integer.MAX_VALUE;
+        int maxprofit = 0;
+        for (int price : prices) {
+            if (price < minprice)
+                minprice = price;
+            else if (price - minprice > maxprofit)
+                maxprofit = price - minprice;
+        }
+        return maxprofit;
+    }
+
     public static void main(String[] args) {
         BestTimeBuyAndSellStock bs = new BestTimeBuyAndSellStock();
         System.out.println("expected:2, actual: " + bs.maxProfit(new int[]{2, 1, 2, 1, 0, 1, 2}));
