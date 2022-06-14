@@ -1,4 +1,4 @@
-package beginers;
+package beginers.stockspans;
 
 import java.util.Arrays;
 import java.util.Stack;
