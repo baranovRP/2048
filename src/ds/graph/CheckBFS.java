@@ -4,6 +4,9 @@ import ds.linkedlist.DoublyLinkedList;
 import ds.stack_queue.Queue;
 
 class CheckBFS {
+
+    // Since this algorithm traverses the whole graph once
+    // Time = O(V + E)
     public static String bfs(Graph g) {
 
         String result = "";
@@ -38,15 +41,15 @@ class CheckBFS {
         while (!queue.isEmpty()) {
 
             //Dequeue a vertex/node from queue and add it to result
-            int current_node = queue.dequeue();
+            int currentNode = queue.dequeue();
 
-            result += String.valueOf(current_node);
+            result += String.valueOf(currentNode);
 
-            //Get adjacent vertices to the current_node from the array,
+            //Get adjacent vertices to the currentNode from the array,
             //and if they are not already visited then enqueue them in the Queue
             DoublyLinkedList<Integer>.Node temp = null;
-            if (g.adjacencyList[current_node] != null)
-                temp = g.adjacencyList[current_node].headNode;
+            if (g.adjacencyList[currentNode] != null)
+                temp = g.adjacencyList[currentNode].headNode;
 
             while (temp != null) {
 
