@@ -44,7 +44,7 @@ class CheckDFS {
             //and if they are not already visited then push them in the stack
             DoublyLinkedList<Integer>.Node temp = null;
             if (g.adjacencyList[current_node] != null)
-                temp = g.adjacencyList[current_node].headNode;
+                temp = g.adjacencyList[current_node].getTailNode();
 
             while (temp != null) {
 
@@ -52,7 +52,7 @@ class CheckDFS {
                     stack.push(temp.data);
 
                 }
-                temp = temp.nextNode;
+                temp = temp.prevNode;
             }
             //Visit the node
             visited[current_node] = true;
@@ -60,7 +60,7 @@ class CheckDFS {
         return result;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         Graph g = new Graph(5);
         g.addEdge(0, 1);
