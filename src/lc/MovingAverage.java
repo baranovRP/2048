@@ -77,3 +77,39 @@ class MovingAverage2 {
         System.out.println(movingAverage.next(0));*/
     }
 }
+
+class MovingAverage3 {
+
+    int [] arr;
+    int tail=0, head=0, counter=0;
+    int sz;
+    int sum;
+
+    public MovingAverage3(int size) {
+        sz=size;
+        sum =0;
+        arr = new int[size];
+    }
+
+    public double next(int val) {
+        counter++;
+        if(counter>sz){
+            sum-=arr[head++%sz];
+        }
+        sum+=val;
+        arr[tail++%sz]=val;
+        return sum * 1.0/Math.min(sz,counter);
+    }
+
+    public static void main(String[] args) {
+        MovingAverage3 movingAverage = new MovingAverage3(3);
+        movingAverage.next(1); // return 1.0 = 1 / 1
+        movingAverage.next(10); // return 5.5 = (1 + 10) / 2
+        movingAverage.next(3); // return 4.66667 = (1 + 10 + 3) / 3
+        movingAverage.next(5); // return 6.0 = (10 + 3 + 5) / 3
+        movingAverage.next(5); // return 6.0 = (10 + 3 + 5) / 3
+/*        MovingAverage movingAverage = new MovingAverage(1);
+        System.out.println(movingAverage.next(4));
+        System.out.println(movingAverage.next(0));*/
+    }
+}
