@@ -42,3 +42,46 @@ public class MinStack {
         return minStack.peek();
     }
 }
+
+class MyNode {
+    int val;
+    int min;
+    MyNode next;
+}
+
+class MyMinStack {
+    MyNode head = null;
+    int size;
+
+    public MyMinStack() {
+        head = new MyNode();
+        size = 0;
+    }
+
+    public void push(int val) {
+        MyNode node = new MyNode();
+        if (size == 0) {
+            node.min = val;
+        } else {
+            node.min = Math.min(head.min, val);
+        }
+        node.val = val;
+        node.next = head;
+        head = node;
+        size++;
+    }
+
+    public void pop() {
+        if (size == 0) return;
+        head = head.next;
+        size--;
+    }
+
+    public int top() {
+        return head.val;
+    }
+
+    public int getMin() {
+        return head.min;
+    }
+}
